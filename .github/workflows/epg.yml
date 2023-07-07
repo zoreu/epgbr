@@ -3,7 +3,7 @@ name: Run EPG Grab
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "0 */5 * * *"
 
