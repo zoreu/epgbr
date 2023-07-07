@@ -32,6 +32,10 @@ jobs:
       - name: Run EPG Grab
         run: SITE=mi.tv npm run grab
         working-directory: epg
+        
+      - name: check folder
+        run: ls
+        working-directory: epg        
 
       - name: Copy File to Output Branch
         run: |
