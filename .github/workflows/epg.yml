@@ -20,11 +20,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Dependencies
-        run: |
-          cd epgbr
-          npm ci
-
       - name: Clone EPG Repository
         run: |
           git clone --depth 1 -b master https://github.com/iptv-org/epg.git
