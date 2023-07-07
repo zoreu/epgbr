@@ -19,6 +19,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+          
+      - name: Install cross-var
+        run: npm install -g cross-var          
 
       - name: Clone EPG Repository
         run: |
