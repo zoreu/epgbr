@@ -1,0 +1,47 @@
+name: Run EPG Grab
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 */5 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Clone EPG Repository
+        run: git clone --depth 1 -b master https://github.com/iptv-org/epg.git
+        working-directory: epg
+
+      - name: Install EPG Dependencies
+        run: npm ci
+        working-directory: epg
+
+      - name: Run EPG Grab
+        run: SITE=mi.tv npm run grab
+        working-directory: epg
+
+      - name: Copy File to Output Branch
+        run: |
+          mkdir -p output/guides/en
+          cp epg/guides/en/mi.tv.xml output/guides/en/
+          cd output
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update mi.tv.xml"
+          git push origin output
