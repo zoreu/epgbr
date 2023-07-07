@@ -32,10 +32,13 @@ jobs:
         run: npm ci
         working-directory: epg
         
+      - name: fix file
+        run: cp sites/mi.tv/mi.tv_br.channels.xml sites/mi.tv/mi.tv.channels.xml
+        working-directory: epg 
+        
       - name: Run EPG Grab
         run: |
           SITE=mi.tv npm run grab
-          SITE=mi.tv_br cross-var epg-grabber --config=sites/$SITE/$SITE.config.js --channels=sites/$SITE/$SITE.channels.xml --output=guides/{lang}/{site}.xml
         working-directory: epg
         
       - name: check folder
