@@ -45,20 +45,20 @@ jobs:
           node index.js
           cp update.txt final/
         
-#       - name: Move File to Final Directory
-#         run: |
-#           cp epg/guides/pt/mi.tv.xml final/epgbr.xml 
+      - name: Move File to Final Directory
+        run: |
+          cp epg/guides/pt/mi.tv.xml final/epgbr.xml 
 
-#       - name: Clone My Repository and Push
-#         run: |
-#           git clone -b output https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git original
-#           cp final/epgbr.xml original
-#           cp final/update.txt original
-#           cd original
-#           git config user.name "GitHub Actions"
-#           git config user.email "actions@github.com"
-#           git add .
-#           git commit -m "Update epgbr.xml"
-#           git push --force origin output
+      - name: Clone My Repository and Push
+        run: |
+          git clone -b output https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git original
+          cp final/epgbr.xml original
+          cp final/update.txt original
+          cd original
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update epgbr.xml"
+          git push --force origin output
 
 
