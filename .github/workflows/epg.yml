@@ -53,6 +53,10 @@ jobs:
           cd final
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git remote set-url origin "https://github.com/zoreu/epgbr.git"
+          git fetch
+          git checkout -b output origin/output
+          git merge origin/output
           git add .
           git commit -m "epgbr.xml"
-          git push --force origin output       
+          git push origin output    
