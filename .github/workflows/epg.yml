@@ -44,15 +44,12 @@ jobs:
           mkdir -p final
         working-directory: epg          
         
-#       - name: Copy File to Final Directory
-#         run: |
-#           cp epg/guides/pt/mi.tv.xml final/epgbr.xml
-#         working-directory: epg  
-
       - name: Copy File to Final Directory
         run: |
-          ls
+          cp guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg  
+
+ 
 
       - name: Commit and Push Changes
         run: |
