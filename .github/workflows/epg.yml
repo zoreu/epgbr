@@ -39,8 +39,8 @@ jobs:
         run: |
           mkdir -p final
           
-      - name: Install dependencies
-        run: npm install          
+      - name: Install date-fns-tz
+        run: npm install date-fns-tz        
           
       - name: make update file
         run: |
