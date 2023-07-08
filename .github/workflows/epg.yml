@@ -44,10 +44,8 @@ jobs:
           cp epg/guides/pt/mi.tv.xml final/epgbr.xml 
 
       - name: Clone My Repository and Push
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone -b output https://github.com/zoreu/epgbr.git original
+          git clone -b output https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git original
           cp final/epgbr.xml original
           cd original
           git config user.name "GitHub Actions"
