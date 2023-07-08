@@ -44,12 +44,15 @@ jobs:
           cp epg/guides/pt/mi.tv.xml final/epgbr.xml              
 
       - name: Clone My Repository and Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: zoreu/epgbr
         run: |
-          git clone -b output "https://${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" original
+          git clone -b output https://github.com/${{ env.GITHUB_REPOSITORY }} original
           cp final/epgbr.xml original
           cd original
           git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.email "actions@github.com"  
           git add .
           git commit -m "Update epgbr.xml"
           git push --force origin output
