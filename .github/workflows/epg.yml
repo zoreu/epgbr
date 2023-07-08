@@ -18,20 +18,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          
-      - name: Install cross-var
-        run: npm install -g cross-var          
+          node-version: '14'       
 
       - name: Clone EPG Repository
         run: |
           git clone --depth 1 -b master https://github.com/iptv-org/epg.git
           cp config_br.xml epg/sites/mi.tv/mi.tv.channels.xml
           cd epg
-
-      - name: Install EPG Dependencies
-        run: npm ci
-        working-directory: epg
         
 #       - name: fix file
 #         run: cp sites/mi.tv/mi.tv_br.channels.xml sites/mi.tv/mi.tv.channels.xml
@@ -48,12 +41,15 @@ jobs:
         
 
       - name: Copy File to Output Branch
-        run: |
-          git clone -b output "https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git" output
-          cp epg/guides/pt/mi.tv.xml output/
+        run: |          
+          mkdir -p output/guides/pt
+          cp epg/guides/pt/mi.tv.xml output/guides/pt/
           cd output
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git remote set-url origin "https://github.com/zoreu/epgbr.git"
+          git fetch
+          git checkout -b output
           git add .
           git commit -m "mi.tv.xml"
-          git push origin output
+          git push origin output          
