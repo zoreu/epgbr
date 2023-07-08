@@ -41,19 +41,19 @@ jobs:
 
       - name: Create Final Directory
         run: |
+          cd ..
           mkdir -p final
-        working-directory: epg
         
-      - name: checar diretorio atual
+      - name: Copy File to Final Directory
         run: |
-          ls
-        working-directory: epg  
-        
-      - name: checar guides
+          cp epg/guides/pt/mi.tv.xml final/epgbr.xml     
+
+      - name: Commit and Push Changes
         run: |
-          cd guides
-          ls
-          cd pt
-        working-directory: epg          
-        
-  
+          cd final
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git init
+          git add .
+          git commit -m "update epgbr.xml"
+          git push --force "https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" master:output
