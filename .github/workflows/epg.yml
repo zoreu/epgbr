@@ -48,9 +48,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |          
-          mkdir -p output/guides/pt
-          cp epg/guides/pt/mi.tv.xml output/guides/pt/
-          cd output
+          mkdir -p final
+          cp epg/guides/pt/mi.tv.xml final
+          cd final
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git remote set-url origin "https://github.com/zoreu/epgbr.git"
