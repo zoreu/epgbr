@@ -49,16 +49,15 @@ jobs:
           cp guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg               
 
-#       - name: Commit and Push Changes
-#         run: |
-#           cd final
-#           git config user.name "GitHub Actions"
-#           git config user.email "actions@github.com"
-#           git init
-#           git add .
-#           git commit -m "update epgbr.xml"
-#           git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
-
       - name: Commit and Push Changes
         run: |
-          ls
+          cd epg
+          cd final
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git init
+          git add .
+          git commit -m "update epgbr.xml"
+          git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
+
+
