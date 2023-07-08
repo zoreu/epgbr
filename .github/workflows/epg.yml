@@ -30,10 +30,6 @@ jobs:
         run: npm ci
         working-directory: epg             
         
-#       - name: fix file
-#         run: cp sites/mi.tv/mi.tv_br.channels.xml sites/mi.tv/mi.tv.channels.xml
-#         working-directory: epg       
-        
       - name: Run EPG Grab
         run: |
           SITE=mi.tv npm run grab
@@ -49,32 +45,19 @@ jobs:
           cp guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg               
 
-#       - name: Commit and Push Changes
-#         env:
-#           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-#         run: |
-#           cd epg
-#           cd final
-#           git config user.name "GitHub Actions"
-#           git config user.email "actions@github.com"
-#           git add .
-#           git commit -m "update epgbr.xml"
-#           git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
-          
+      - name: Configure Git Identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+        working-directory: epg/final
+
       - name: Commit and Push Changes
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          cd epg
-          cd final
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git remote set-url origin "https://github.com/zoreu/epgbr.git"
-          git fetch
-          git checkout -b output origin/output
-          git merge origin/output
+          git init
           git add .
-          git commit -m "epgbr.xml"
-          git push origin output  
-
-
+          git commit -m "Update epgbr.xml"
+          git remote add origin "https://github.com/zoreu/epgbr.git"
+          git push --force origin HEAD:output
+        working-directory: epg/final
