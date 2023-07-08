@@ -37,30 +37,24 @@ jobs:
       - name: Run EPG Grab
         run: |
           SITE=mi.tv npm run grab
-        working-directory: epg
-        
-      - name: check folder
-        run: ls
-        working-directory: epg
-        
-      - name: Clean Untracked Files
-        run: |
-          git clean -ffdx
-        working-directory: epg
+        working-directory: epg        
 
-      - name: make epgbr
+      - name: Create Final Directory
         run: |
           mkdir -p final
+        working-directory: epg
+        
+      - name: Copy File to Final Directory
+        run: |
           cp epg/guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg        
 
-      - name: make changes
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |          
+      - name: Commit and Push Changes
+        run: |
           cd final
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git init
           git add .
-          git commit -m "Update example.com.xml"
-          git push origin output  
+          git commit -m "update epgbr.xml"
+          git push --force "https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" master:output
