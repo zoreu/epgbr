@@ -3,7 +3,7 @@ name: Run EPG Grab
 on:
   push:
     branches:
-      - main2
+      - main
   schedule:
     - cron: "0 */5 * * *"
 
@@ -26,6 +26,7 @@ jobs:
       - name: Clone EPG Repository
         run: |
           git clone --depth 1 -b master https://github.com/iptv-org/epg.git
+          cp config_br.xml epg/sites/mi.tv/mi.tv.channels.xml
           cd epg
 
       - name: Install EPG Dependencies
