@@ -47,13 +47,15 @@ jobs:
       - name: Copy File to Final Directory
         run: |
           cp guides/pt/mi.tv.xml final/epgbr.xml
-        working-directory: epg  
-
- 
+        working-directory: epg 
+        
+      - name: Navigate to Final Directory
+        run: |
+          cd final
+        working-directory: epg/final
 
       - name: Commit and Push Changes
         run: |
-          cd final
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git init
