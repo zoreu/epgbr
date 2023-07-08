@@ -49,18 +49,6 @@ jobs:
           cp guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg               
 
-      - name: Commit and Push Changes
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          cd epg
-          cd final
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "update epgbr.xml"
-          git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
-          
 #       - name: Commit and Push Changes
 #         env:
 #           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -71,6 +59,22 @@ jobs:
 #           git config user.email "actions@github.com"
 #           git add .
 #           git commit -m "update epgbr.xml"
-#           git push origin output  
+#           git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
+          
+      - name: Commit and Push Changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          cd epg
+          cd final
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git remote set-url origin "https://github.com/zoreu/epgbr.git"
+          git fetch
+          git checkout -b output origin/output
+          git merge origin/output
+          git add .
+          git commit -m "epgbr.xml"
+          git push origin output  
 
 
