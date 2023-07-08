@@ -37,11 +37,13 @@ jobs:
 
       - name: Create Final Directory
         run: |
-          mkdir -p final  
+          mkdir -p final
+          
+      - name: Install dependencies
+        run: npm install          
           
       - name: make update file
         run: |
-          ls
           node index.js
           cp update.txt final/
         
