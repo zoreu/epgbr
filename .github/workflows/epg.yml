@@ -46,14 +46,14 @@ jobs:
       - name: Clone My Repository and Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: zoreu/epgbr
+          USERNAME: zoreu
+          REPO: epgbr
         run: |
-          git clone -b output https://github.com/${{ env.GITHUB_REPOSITORY }} original
+          git clone -b output git@github.com:${{ env.USERNAME }}/${{ env.REPO }}.git original
           cp final/epgbr.xml original
           cd original
           git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git remote set-url origin "https://github.com/${{ env.GITHUB_REPOSITORY }}"          
+          git config user.email "actions@github.com"         
           git add .
           git commit -m "Update epgbr.xml"
           git push --force origin output
