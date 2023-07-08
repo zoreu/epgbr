@@ -44,9 +44,9 @@ jobs:
           mkdir -p final
         working-directory: epg          
         
-      - name: Copy File to Final Directory
+      - name: Move File to Final Directory
         run: |
-          cp guides/pt/mi.tv.xml final/epgbr.xml
+          cp epg/guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg
         
       - name: Configure Git Identity
@@ -57,8 +57,10 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
+          cd final
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
           git init
           git add .
           git commit -m "update epgbr.xml"
-          git push --force "https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" master:output
-        working-directory: epg/final
+          git push --force "https://zoreu:${{ secrets.GITHUB_TOKEN }}@github.com/zoreu/epgbr.git" master:output
