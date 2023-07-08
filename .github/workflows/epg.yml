@@ -46,24 +46,14 @@ jobs:
         run: ls
         working-directory: epg
         
-      - name: Create Output Branch
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git checkout -b output
-          git push --set-upstream origin output        
 
       - name: Copy File to Output Branch
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          mkdir -p output/guides/pt
-          cp epg/guides/pt/mi.tv.xml output/guides/pt/
+          git clone -b output "https://${{ secrets.GH_TOKEN }}@github.com/zoreu/easylistbrasil.git" output
+          cp epg/guides/pt/mi.tv.xml output/
           cd output
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "Update example.com.xml"
+          git commit -m "mi.tv.xml"
           git push origin output
