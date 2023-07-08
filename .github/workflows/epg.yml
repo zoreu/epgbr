@@ -46,7 +46,7 @@ jobs:
         
       - name: Move File to Final Directory
         run: |
-          cp epg/guides/pt/mi.tv.xml final/epgbr.xml
+          cp guides/pt/mi.tv.xml final/epgbr.xml
         working-directory: epg               
 
       - name: Commit and Push Changes
