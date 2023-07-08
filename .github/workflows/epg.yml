@@ -43,20 +43,24 @@ jobs:
         run: ls
         working-directory: epg
         
+      - name: Clean Untracked Files
+        run: |
+          git clean -ffdx
+        working-directory: epg
 
-      - name: Copy File to Output Branch
+      - name: make epgbr
+        run: |
+          mkdir -p final
+          cp epg/guides/pt/mi.tv.xml final/epgbr.xml
+        working-directory: epg        
+
+      - name: make changes
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |          
-          mkdir -p final
-          cp epg/guides/pt/mi.tv.xml final/epgbr.xml
           cd final
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git remote set-url origin "https://github.com/zoreu/epgbr.git"
-          git fetch
-          git checkout -b output origin/output
-          git merge origin/output
           git add .
-          git commit -m "epgbr.xml"
-          git push origin output    
+          git commit -m "Update example.com.xml"
+          git push origin output  
