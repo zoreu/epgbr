@@ -35,11 +35,7 @@ jobs:
         
 #       - name: fix file
 #         run: cp sites/mi.tv/mi.tv_br.channels.xml sites/mi.tv/mi.tv.channels.xml
-#         working-directory: epg
-        
-      - name: fix file
-        run: cp sites/mi.tv/mi.tv_br.channels.xml sites/mi.tv/mi.tv.channels.xml
-        working-directory: epg         
+#         working-directory: epg       
         
       - name: Run EPG Grab
         run: |
