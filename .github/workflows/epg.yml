@@ -40,7 +40,9 @@ jobs:
           mkdir -p final
           
       - name: Install date-fns-tz
-        run: npm install date-fns-tz        
+        run: |
+          npm install date-fns
+          npm install date-fns-tz        
           
       - name: make update file
         run: |
