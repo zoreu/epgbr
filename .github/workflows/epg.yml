@@ -47,8 +47,8 @@ jobs:
 
       - name: Configure Git Identity
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "zoreu"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
         working-directory: epg/final
 
       - name: Commit and Push Changes
