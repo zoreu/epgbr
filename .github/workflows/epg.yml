@@ -47,13 +47,7 @@ jobs:
       - name: Move File to Final Directory
         run: |
           cp epg/guides/pt/mi.tv.xml final/epgbr.xml
-        working-directory: epg
-        
-      - name: Configure Git Identity
-        run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"
-        working-directory: epg/final        
+        working-directory: epg               
 
       - name: Commit and Push Changes
         run: |
