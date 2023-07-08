@@ -49,7 +49,7 @@ jobs:
 
       - name: Copy File to Output Branch
         run: |
-          git clone -b output "https://${{ secrets.GH_TOKEN }}@github.com/zoreu/easylistbrasil.git" output
+          git clone -b output "https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git" output
           cp epg/guides/pt/mi.tv.xml output/
           cd output
           git config user.name "GitHub Actions"
