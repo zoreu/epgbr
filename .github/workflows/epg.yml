@@ -37,7 +37,12 @@ jobs:
 
       - name: Create Final Directory
         run: |
-          mkdir -p final        
+          mkdir -p final  
+          
+      - name: make update file
+        run: |
+          node index.js
+          cp update.txt final/
         
       - name: Move File to Final Directory
         run: |
@@ -47,6 +52,7 @@ jobs:
         run: |
           git clone -b output https://${{ secrets.GH_TOKEN }}@github.com/zoreu/epgbr.git original
           cp final/epgbr.xml original
+          cp final/update.txt original
           cd original
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
