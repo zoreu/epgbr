@@ -4,5 +4,6 @@
     <channel lang="pt" xmltv_id="AEBrazil.br" site_id="br#a-e">A&amp;E</channel>
     <channel lang="pt" xmltv_id="AgroMais.br" site_id="br#agromais-hd">Agro+ HD</channel>
     <channel lang="pt" xmltv_id="AmazonSat.br" site_id="br#amazon-sat">Amazon Sat</channel>
+    <channel lang="pt" xmltv_id="JPNews.br" site_id="br#jovem-pan-news">Jovem Pan News</channel>
   </channels>
 </site>
