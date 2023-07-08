@@ -8,7 +8,7 @@ const formatoDesejado = 'yyyyMMddHHmm';
 const dataFormatada = format(dataAtual, formatoDesejado, { timeZone: fusoHorario });
 
 // Criar o conteúdo do arquivo de texto
-const conteudoArquivo = `Data e hora do Brasil: ${dataFormatada}`;
+const conteudoArquivo = `time: ${dataFormatada}`;
 
 // Escrever o conteúdo no arquivo
 fs.writeFileSync('update.txt', conteudoArquivo);
