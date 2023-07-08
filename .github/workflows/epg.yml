@@ -45,6 +45,8 @@ jobs:
 
 
       - name: clone my repository and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
         run: |
           git clone -b output "https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" original
           cp final/epgbr.xml original
