@@ -44,14 +44,11 @@ jobs:
         
       - name: check folder
         run: ls
-        working-directory: epg 
-        
-      - name: Create Output Branch
-        run: |
-          git checkout -b output
-          git push origin output        
+        working-directory: epg        
 
       - name: Copy File to Output Branch
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           mkdir -p output/guides/pt
           cp epg/guides/pt/mi.tv.xml output/guides/pt/
