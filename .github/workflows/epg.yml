@@ -37,27 +37,22 @@ jobs:
 
       - name: Create Final Directory
         run: |
-          mkdir -p final
-        working-directory: epg          
+          mkdir -p final        
         
       - name: Move File to Final Directory
         run: |
-          cp guides/pt/mi.tv.xml final/epgbr.xml
-        working-directory: epg               
+          cp epg/guides/pt/mi.tv.xml final/epgbr.xml              
 
-      - name: Configure Git Identity
-        run: |
-          git config user.name "zoreu"
-          git config user.email "joel_webmaster@live.com"
-        working-directory: epg/final
 
-      - name: Commit and Push Changes
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: clone my repository and push
         run: |
-          git init
+          git clone -b output "https://$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY" original
+          cp final/epgbr.xml original
+          cd original
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"          
           git add .
-          git commit -m "Update epgbr.xml"
-          git remote add origin "https://github.com/zoreu/epgbr.git"
-          git push --force origin HEAD:output
-        working-directory: epg/final
+          git commit -m "update epgbr.xml"
+          git push --force output
+
+
