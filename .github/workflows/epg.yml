@@ -44,7 +44,12 @@ jobs:
         
       - name: check folder
         run: ls
-        working-directory: epg        
+        working-directory: epg 
+        
+      - name: Create Output Branch
+        run: |
+          git checkout -b output
+          git push origin output        
 
       - name: Copy File to Output Branch
         run: |
