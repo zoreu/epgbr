@@ -54,6 +54,7 @@ jobs:
           cd original
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git remote set-url origin "https://github.com/${{ env.GITHUB_ACTOR }}/${{ env.REPO }}.git"          
           git add .
           git commit -m "Update epgbr.xml"
           git push --force origin output
