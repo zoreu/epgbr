@@ -137,5 +137,6 @@
     <channel lang="pt" xmltv_id="UniversalTVBrazil.br" site_id="br#universal">Universal TV</channel>
     <channel lang="pt" xmltv_id="WarnerChannelBrazil.br" site_id="br#warner-channel">Warner Channel</channel>
     <channel lang="pt" xmltv_id="WooHoo.br" site_id="br#woohoo">WooHoo</channel>
+    <channel lang="pt" xmltv_id="TVNovoTempoBrasil.br" site_id="br#tv-novo-tempo">TV Novo Tempo</channel>
   </channels>
 </site>
