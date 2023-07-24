@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 3 * * *" # Executa às 3h da manhã (UTC-3)
+    - cron: "0 */3 * * *"
 
 jobs:
   build:
