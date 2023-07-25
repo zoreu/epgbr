@@ -14,7 +14,15 @@ jobs:
     steps:
       - name: exibir data e hora do sistema
         run: |
-          date # Opcional: Exibir a data e hora após configurar o fuso horário    
+          date # Opcional: Exibir a data e hora após configurar o fuso horário
+          
+      - name: Diminuir 3 Horas da Data
+        run: |
+          # Diminuir 3 horas da data atual do sistema
+          sudo date -s "$(date -d '3 hours ago' '+%Y-%m-%d %H:%M:%S')"
+          date
+          
+          
 #       - name: Configurar Fuso Horário
 #         run: |
 #           sudo timedatectl set-timezone America/Sao_Paulo
