@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Set Timezone
-        uses: r-lib/actions/set-timezone@v1
+        uses: borales/actions-set-timezone@v1
         with:
           timezone: 'America/Sao_Paulo'
 
