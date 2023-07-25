@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configurar Fuso Horário
-        run: |
-          sudo timedatectl set-timezone America/Sao_Paulo
-          date # Opcional: Exibir a data e hora após configurar o fuso horário
+#       - name: Configurar Fuso Horário
+#         run: |
+#           sudo timedatectl set-timezone America/Sao_Paulo
+#           date # Opcional: Exibir a data e hora após configurar o fuso horário
 
       - name: Checkout Repository
         uses: actions/checkout@v2
