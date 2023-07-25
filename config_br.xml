@@ -2,5 +2,6 @@
 <site site="mi.tv">
   <channels>
     <channel lang="pt" xmltv_id="AMCBrazil.br" site_id="br#amc-brasil">AMC Brasil</channel>
+    <channel lang="pt" xmltv_id="CinemaxBrazil.br" site_id="br#cinemax">Cinemax Brasil</channel>
   </channels>
 </site>
