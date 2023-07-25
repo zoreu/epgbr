@@ -14,6 +14,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "America/Sao_Paulo"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
