@@ -12,17 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configurar Fuso Horário
+      - name: exibir data e hora do sistema
         run: |
-          sudo timedatectl set-timezone America/Sao_Paulo
-          date # Opcional: Exibir a data e hora após configurar o fuso horário
+          date # Opcional: Exibir a data e hora após configurar o fuso horário    
+#       - name: Configurar Fuso Horário
+#         run: |
+#           sudo timedatectl set-timezone America/Sao_Paulo
+#           date # Opcional: Exibir a data e hora após configurar o fuso horário
           
-      - name: Diminuir um Dia no Fuso Horário de São Paulo
-        run: |
-          # Diminuir um dia no fuso horário de São Paulo
-          previous_date=$(TZ=":America/Sao_Paulo" date -d "yesterday" +"%Y-%m-%d")
-          echo "Data com um dia a menos em São Paulo: $previous_date"
-          date
+#       - name: Diminuir um Dia no Fuso Horário de São Paulo
+#         run: |
+#           # Diminuir um dia no fuso horário de São Paulo
+#           previous_date=$(TZ=":America/Sao_Paulo" date -d "yesterday" +"%Y-%m-%d")
+#           echo "Data com um dia a menos em São Paulo: $previous_date"
+#           date
 
       - name: Checkout Repository
         uses: actions/checkout@v2
