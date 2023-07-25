@@ -21,19 +21,6 @@ jobs:
           # Diminuir 3 horas da data atual do sistema
           sudo date -s "$(date -d '3 hours ago' '+%Y-%m-%d %H:%M:%S')"
           date
-          
-          
-#       - name: Configurar Fuso Horário
-#         run: |
-#           sudo timedatectl set-timezone America/Sao_Paulo
-#           date # Opcional: Exibir a data e hora após configurar o fuso horário
-          
-#       - name: Diminuir um Dia no Fuso Horário de São Paulo
-#         run: |
-#           # Diminuir um dia no fuso horário de São Paulo
-#           previous_date=$(TZ=":America/Sao_Paulo" date -d "yesterday" +"%Y-%m-%d")
-#           echo "Data com um dia a menos em São Paulo: $previous_date"
-#           date
 
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -41,7 +28,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'       
+          node-version: '14'
+          
+      - name: Configurar Python
+        uses: actions/setup-python@v2  # Ação para configurar a versão do Python
+        with:
+          python-version: 3.9  # Especifique a versão do Python que deseja usar
 
       - name: Clone EPG Repository
         run: |
@@ -74,7 +66,11 @@ jobs:
         
       - name: Move File to Final Directory
         run: |
-          cp epg/guides/pt/mi.tv.xml final/epg.xml 
+          cp epg/guides/pt/mi.tv.xml final/epg.xml
+          
+      - name: FIX EPG
+        run: |
+          python epg.py final/epg.xml           
 
       - name: Clone My Repository and Push
         run: |
