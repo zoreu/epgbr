@@ -16,10 +16,10 @@ jobs:
         run: |
           date # Opcional: Exibir a data e hora após configurar o fuso horário
           
-      - name: Diminuir 5 Horas da Data
+      - name: Diminuir 3 Horas da Data
         run: |
           # Diminuir 3 horas da data atual do sistema
-          sudo date -s "$(date -d '5 hours ago' '+%Y-%m-%d %H:%M:%S')"
+          sudo date -s "$(date -d '3 hours ago' '+%Y-%m-%d %H:%M:%S')"
           date
           
           
