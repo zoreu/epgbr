@@ -18,6 +18,6 @@ conteudo_arquivo = f'time: {data_formatada}'
 
 # Escrever o conteúdo no arquivo
 with open('update.txt', 'w') as arquivo:
-  arquivo.write(conteudo_arquivo)
+    arquivo.write(conteudo_arquivo)
 
 print('Arquivo gerado com sucesso')
