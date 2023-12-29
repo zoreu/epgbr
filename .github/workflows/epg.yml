@@ -67,6 +67,7 @@ jobs:
           
       - name: make update file
         run: |
+          pip install pytz
           python make_update.py
           cp update.txt final/
         
