@@ -67,7 +67,7 @@ jobs:
           
       - name: make update file
         run: |
-          node index.js
+          python make_update.py
           cp update.txt final/
         
       - name: Move File to Final Directory
