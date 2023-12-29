@@ -20,4 +20,4 @@ conteudo_arquivo = f'time: {data_formatada}'
 with open('update.txt', 'w') as arquivo:
   arquivo.write(conteudo_arquivo)
 
-print('Arquivo gerado com sucesso!')
+print('Arquivo gerado com sucesso')
