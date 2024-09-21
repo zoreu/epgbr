@@ -28,7 +28,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22.9.0'
+          node-version: '16'
           
       - name: Configurar Python
         uses: actions/setup-python@v2  # Ação para configurar a versão do Python
